@@ -84,8 +84,7 @@ class FirebaseNotifications extends Object
     {
         $body = [
             'registration_ids' => $tokens,
-            'data' => $data
-        ];
+        ]+$data;
         if ($collapse_key) $body['collapse_key']=$collapse_key;
         if ($delay_while_idle!==null) $body['delay_while_idle']=$delay_while_idle;
         if ($other) $body+=$other;
