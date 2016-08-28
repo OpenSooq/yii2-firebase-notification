@@ -72,19 +72,23 @@ class FirebaseNotifications extends Object
     }
 
     /**
-     * send notification for a specific tokens with FCM
-     * @param array $tokens
-     * @param array $data (can be something like ["message"=>$message] )
+     * high level method to send notification for a specific tokens (registration_ids) with FCM
+     * see https://firebase.google.com/docs/cloud-messaging/http-server-ref
+     * see https://firebase.google.com/docs/cloud-messaging/concept-options#notifications_and_data_messages
+     * 
+     * @param array  $tokens the registration ids
+     * @param array  $notification can be something like {title:, body:, sound:, badge:, click_action:, }
      * @param string $collapse_key
-     * @param bool $delay_while_idle
-     * @param array other
+     * @param bool   $delay_while_idle
+     * @param array  $other
      * @return mixed
      */
-    public function sendDataMessage($tokens = [], $data, $collapse_key=null, $delay_while_idle=null, $other=null)
+    public function sendNotification($tokens = [], $notification, $collapse_key=null, $delay_while_idle=null, $other=null)
     {
         $body = [
             'registration_ids' => $tokens,
-        ]+$data;
+            'notification' => $notification,
+        ];
         if ($collapse_key) $body['collapse_key']=$collapse_key;
         if ($delay_while_idle!==null) $body['delay_while_idle']=$delay_while_idle;
         if ($other) $body+=$other;
