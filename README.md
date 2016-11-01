@@ -34,7 +34,7 @@ to the require section of your composer.json file.
 ## Usage
 
 ```ruby
-$service = new FirebaseNotifications('YOUR_KEY');
+$service = new FirebaseNotifications(['authKey' => 'YOUR_KEY']);
 
 $service->sendNotification($tokens,$message);
 ```
