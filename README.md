@@ -38,7 +38,7 @@ $service = new FirebaseNotifications('YOUR_KEY');
 
 $service->send($tokens,$message);
 ```
-you can clone the android build [here](https://github.com/Amr-alshroof/Fcm-Android),
+You can clone the android build [here](https://github.com/Amr-alshroof/Fcm-Android),
 and use it to test your code.
 
 
