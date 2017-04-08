@@ -34,9 +34,9 @@ to the require section of your composer.json file.
 ## Usage
 
 ```ruby
-$service = new FirebaseNotifications('YOUR_KEY');
+$service = new FirebaseNotifications(['authKey' => 'YOUR_KEY']);
 
-$service->send($tokens,$message);
+$service->sendNotification($tokens, $message);
 ```
 You can clone the android build [here](https://github.com/Amr-alshroof/Fcm-Android),
 and use it to test your code.
