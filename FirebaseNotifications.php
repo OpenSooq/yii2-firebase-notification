@@ -3,6 +3,7 @@ namespace opensooq\firebase;
 
 use yii\base\Object;
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * @author Amr Alshroof
@@ -78,20 +79,16 @@ class FirebaseNotifications extends Object
      * 
      * @param array  $tokens the registration ids
      * @param array  $notification can be something like {title:, body:, sound:, badge:, click_action:, }
-     * @param string $collapse_key
-     * @param bool   $delay_while_idle
-     * @param array  $other
+     * @param array  $options other FCM options https://firebase.google.com/docs/cloud-messaging/http-server-ref#downstream-http-messages-json
      * @return mixed
      */
-    public function sendNotification($tokens = [], $notification, $collapse_key=null, $delay_while_idle=null, $other=null)
+    public function sendNotification($tokens = [], $notification, $options = [])
     {
         $body = [
             'registration_ids' => $tokens,
             'notification' => $notification,
         ];
-        if ($collapse_key) $body['collapse_key']=$collapse_key;
-        if ($delay_while_idle!==null) $body['delay_while_idle']=$delay_while_idle;
-        if ($other) $body+=$other;
+        $body = ArrayHelper::merge($body, $options);
         return $this->send($body);
     }
 
