@@ -1,14 +1,14 @@
 <?php
 namespace opensooq\firebase;
 
-use yii\base\Object;
+use yii\base\BaseObject;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
  * @author Amr Alshroof
  */
-class FirebaseNotifications extends Object
+class FirebaseNotifications extends BaseObject
 {
     /**
      * @var string the auth_key Firebase cloude messageing server key.
